@@ -170,7 +170,6 @@ body.crazy-mode #mainButton {
   }
 }
 
-/* 떠다니는 광고 글자 */
 .floating {
   position: fixed;
   z-index: 25;
@@ -182,8 +181,22 @@ body.crazy-mode #mainButton {
   font-weight: 900;
   border-radius: 12px;
   box-shadow: 0 0 25px white;
-  animation: floatMove 0.75s infinite alternate;
+  transition:
+    left 0.35s ease,
+    top 0.35s ease,
+    transform 0.2s ease;
+  animation: floatShake 0.35s infinite alternate;
 }
+
+@keyframes floatShake {
+  from {
+    transform: rotate(-10deg) scale(1);
+  }
+  to {
+    transform: rotate(10deg) scale(1.2);
+  }
+}
+
 
 .f1 {
   top: 8%;
