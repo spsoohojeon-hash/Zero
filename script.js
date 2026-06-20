@@ -130,3 +130,19 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+let movingStarted = false;
+
+function startMovingUI() {
+  if (movingStarted) return;
+  movingStarted = true;
+
+  setInterval(() => {
+    floatingTexts.forEach((item) => {
+      const x = Math.random() * 80 + 5;
+      const y = Math.random() * 75 + 5;
+
+      item.style.left = x + "vw";
+      item.style.top = y + "vh";
+    });
+  }, 450);
+}
