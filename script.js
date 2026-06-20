@@ -59,14 +59,8 @@ function createEmojiRain() {
 
 function createRandomAds() {
   const texts = [
-    "지금 가입!",
+    "지금 가입시 500원증정!",
     "제로바보!",
-    "닫기 버튼 없음!",
-    "무료 아님!",
-    "당첨된 척!",
-    "누르면 손해!",
-    "광고아님!",
-    "수상함 100%"
   ];
 
   for (let i = 0; i < 8; i++) {
