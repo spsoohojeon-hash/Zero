@@ -144,5 +144,5 @@ function startMovingUI() {
       item.style.left = x + "vw";
       item.style.top = y + "vh";
     });
-  }, 450);
+  }, 180);
 }
