@@ -1,0 +1,249 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #111827;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* 처음 화면: 정상인 척 */
+#mainButton {
+  padding: 18px 42px;
+  font-size: 24px;
+  font-weight: 900;
+  border: none;
+  border-radius: 16px;
+  background: white;
+  color: #111827;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+#mainButton:hover {
+  transform: scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
+
+/* 버튼 누른 뒤 병맛 모드 */
+body.crazy-mode {
+  background: linear-gradient(
+    45deg,
+    red,
+    yellow,
+    lime,
+    cyan,
+    blue,
+    magenta,
+    red
+  );
+  background-size: 800% 800%;
+  animation:
+    bgMove 1s infinite linear,
+    screenFlash 0.28s infinite alternate;
+}
+
+@keyframes bgMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes screenFlash {
+  0% {
+    filter: hue-rotate(0deg) saturate(1.5) brightness(1);
+  }
+  100% {
+    filter: hue-rotate(150deg) saturate(3) brightness(1.35);
+  }
+}
+
+body.crazy-mode::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.16) 0px,
+      rgba(255, 255, 255, 0.16) 2px,
+      transparent 2px,
+      transparent 5px
+    );
+  animation: noiseMove 0.2s infinite;
+  z-index: 1;
+}
+
+@keyframes noiseMove {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(12px);
+  }
+}
+
+/* 누른 뒤 버튼도 미쳐버림 */
+body.crazy-mode #mainButton {
+  position: fixed;
+  bottom: 80px;
+  z-index: 10;
+  background: yellow;
+  color: black;
+  border: 5px solid black;
+  border-radius: 0;
+  box-shadow:
+    0 0 30px red,
+    0 0 60px yellow,
+    0 0 90px lime;
+  animation: buttonMad 0.22s infinite alternate;
+}
+
+@keyframes buttonMad {
+  from {
+    transform: rotate(-6deg) scale(1);
+  }
+  to {
+    transform: rotate(6deg) scale(1.22);
+  }
+}
+
+/* 제로바보 중앙 텍스트 */
+#result {
+  position: fixed;
+  z-index: 20;
+  font-size: 72px;
+  font-weight: 900;
+  color: purple;
+  text-shadow:
+    5px 5px yellow,
+    -5px -5px cyan,
+    0 0 35px white;
+  animation: resultMad 0.28s infinite alternate;
+}
+
+@keyframes resultMad {
+  from {
+    transform: scale(1) rotate(-4deg);
+  }
+  to {
+    transform: scale(1.25) rotate(4deg);
+  }
+}
+
+/* 위 팝업 */
+#popup {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  padding: 18px 24px;
+  background: black;
+  color: yellow;
+  border: 5px solid red;
+  font-size: 22px;
+  font-weight: 900;
+  box-shadow: 0 0 40px white;
+  animation: popupShake 0.2s infinite alternate;
+}
+
+@keyframes popupShake {
+  from {
+    transform: translateX(-50%) rotate(-3deg) scale(1);
+  }
+  to {
+    transform: translateX(-50%) rotate(3deg) scale(1.08);
+  }
+}
+
+/* 떠다니는 광고 글자 */
+.floating {
+  position: fixed;
+  z-index: 25;
+  padding: 12px 18px;
+  background: yellow;
+  border: 5px solid red;
+  color: blue;
+  font-size: 26px;
+  font-weight: 900;
+  border-radius: 12px;
+  box-shadow: 0 0 25px white;
+  animation: floatMove 0.75s infinite alternate;
+}
+
+.f1 {
+  top: 8%;
+  left: 8%;
+}
+
+.f2 {
+  top: 12%;
+  right: 8%;
+}
+
+.f3 {
+  bottom: 18%;
+  left: 10%;
+}
+
+.f4 {
+  bottom: 20%;
+  right: 8%;
+}
+
+.f5 {
+  top: 45%;
+  left: 4%;
+}
+
+.f6 {
+  top: 42%;
+  right: 5%;
+}
+
+@keyframes floatMove {
+  from {
+    transform: rotate(-10deg) scale(1);
+  }
+  to {
+    transform: rotate(10deg) scale(1.22);
+  }
+}
+
+/* 아래 흐르는 뉴스 */
+.ticker {
+  position: fixed;
+  bottom: 0;
+  z-index: 40;
+  width: 100%;
+  padding: 12px;
+  background: black;
+  color: lime;
+  font-size: 20px;
+  font-weight: 900;
+  white-space: nowrap;
+  animation: slide 5s linear infinite;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
