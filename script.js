@@ -7,6 +7,7 @@ const floatingTexts = document.querySelectorAll(".floating");
 let count = 0;
 
 button.addEventListener("click", () => {
+  startMovingUI();
   count++;
 
   document.body.classList.add("crazy-mode");
